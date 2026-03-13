@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "luffa-connector"
+version = "0.1.0"
+description = "Connect any AI agent to the Luffa messaging platform"
+requires-python = ">=3.10"
+dependencies = [
+    "luffa-bot-python-sdk>=0.1.2",
+    "openai>=1.30.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.27",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.34.0",
+    "aiosqlite>=0.20.0",
+]
+
+[project.scripts]
+luffa-agent     = "luffa_connector.cli:agent_main"
+luffa-discovery = "luffa_connector.cli:discovery_main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["luffa_connector*", "luffa_discovery*"]
